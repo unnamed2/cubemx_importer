@@ -1,0 +1,41 @@
+{
+	"name": "cubemx-importer",
+	"uuid": "18e009015bbf4559bea10a9039eeee96",
+	"displayName": "CubeMX 引脚配置导入原理图",
+	"description": "CubeMX 引脚配置导入原理图",
+	"version": "1.0.0",
+	"publisher": "unnamed456",
+	"engines": {
+		"eda": "^2.3.0"
+	},
+	"license": "Apache-2.0",
+	"repository": {
+		"type": "extension-store",
+		"url": "https://github.com/unnamed2/cubemx_importer"
+	},
+	"categories": "Other",
+	"keywords": ["CubeMX", "IOC"],
+	"images": {
+		"logo": "./images/logo.png"
+	},
+	"homepage": "https://github.com/unnamed2/cubemx_importer",
+	"bugs": "https://github.com/unnamed2/cubemx_importer/issues",
+	"activationEvents": {},
+	"entry": "./dist/index",
+	"dependentExtensions": {},
+	"headerMenus": {
+		"sch": [
+			{
+				"id": "ImportCubeMXIOC",
+				"title": "Import CubeMX IOC",
+				"menuItems": [
+					{
+						"id": "ImportCubeMXIOC",
+						"title": "从CubeMX IOC导入",
+						"registerFn": "importCubeMXIOC"
+					}
+				]
+			}
+		]
+	}
+}
