@@ -1,0 +1,122 @@
+[
+	{
+		"async": true,
+		"primitiveType": "Component",
+		"componentType": "part",
+		"component": {
+			"libraryUuid": "61f61061b04a4f38b6d66cbd78f46e44",
+			"uuid": "7decc0ccc7204745b5f2d43191277b4b"
+		},
+		"x": -140,
+		"y": 95,
+		"subPartName": "STM32F407VET6.2",
+		"rotation": 0,
+		"mirror": false,
+		"addIntoBom": true,
+		"addIntoPcb": true,
+		"net": "",
+		"primitiveId": "1f6c754fd49ffcca",
+		"symbol": {
+			"libraryUuid": "61f61061b04a4f38b6d66cbd78f46e44",
+			"uuid": "22afef5aa84440269ffa32d18caf6975"
+		},
+		"footprint": {
+			"libraryUuid": "61f61061b04a4f38b6d66cbd78f46e44",
+			"uuid": "2119efbf6bac4573be690d10d0722797"
+		},
+		"designator": "U5",
+		"name": "={Manufacturer Part}",
+		"uniqueId": "",
+		"manufacturer": "ST(意法半导体)",
+		"manufacturerId": "STM32F407VET6",
+		"supplier": "LCSC",
+		"supplierId": "C28730",
+		"otherProperty": {
+			"Symbol": "22afef5aa84440269ffa32d18caf6975",
+			"Multi-Part Group": "",
+			"Relevance": "[]",
+			"Device": "7decc0ccc7204745b5f2d43191277b4b",
+			"LCSC Part Name": "带DSP和FPU的高性能基础系列ARM Cortex-M4 MCU，具有512 KB Flash、168 MHz CPU、ART加速器、以太网和FSMC",
+			"Supplier Footprint": "LQFP-100(14x14)",
+			"JLCPCB Part Class": "扩展库",
+			"Datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20140801/1457707197138.pdf",
+			"Footprint": "2119efbf6bac4573be690d10d0722797",
+			"3D Model": "469e6cc70557486dbd01fd12ff814964",
+			"3D Model Title": "LQFP-100_L14.0-W14.0-H1.4-LS16.0-P0.50",
+			"3D Model Transform": "629.92,629.92,0,0,0,0,0,0,0",
+			"CPU Core": "ARM-M4",
+			"CPU Maximum Speed": "168MHz",
+			"Program Storage Size": "512KB",
+			"Program Memory Type": "FLASH",
+			"Number of I/O": "82",
+			"ADC (Bit)": "12bit",
+			"DAC (Bit)": "12bit",
+			"Voltage - Supply": "1.8V~3.6V",
+			"Applications": "-",
+			"Description": "CPU内核:ARM-M4;CPU最大主频:168MHz;应用领域:-;",
+			"Reuse Block": "",
+			"Group ID": "",
+			"Channel ID": ""
+		}
+	},
+	{
+		"async": true,
+		"primitiveType": "Component",
+		"componentType": "part",
+		"component": {
+			"libraryUuid": "61f61061b04a4f38b6d66cbd78f46e44",
+			"uuid": "7decc0ccc7204745b5f2d43191277b4b"
+		},
+		"x": -500,
+		"y": -100,
+		"subPartName": "STM32F407VET6.1",
+		"rotation": 0,
+		"mirror": false,
+		"addIntoBom": true,
+		"addIntoPcb": true,
+		"net": "",
+		"primitiveId": "2d8e2d2752341d25",
+		"symbol": {
+			"libraryUuid": "61f61061b04a4f38b6d66cbd78f46e44",
+			"uuid": "22afef5aa84440269ffa32d18caf6975"
+		},
+		"footprint": {
+			"libraryUuid": "61f61061b04a4f38b6d66cbd78f46e44",
+			"uuid": "2119efbf6bac4573be690d10d0722797"
+		},
+		"designator": "U5",
+		"name": "={Manufacturer Part}",
+		"uniqueId": "",
+		"manufacturer": "ST(意法半导体)",
+		"manufacturerId": "STM32F407VET6",
+		"supplier": "LCSC",
+		"supplierId": "C28730",
+		"otherProperty": {
+			"Symbol": "22afef5aa84440269ffa32d18caf6975",
+			"Multi-Part Group": "",
+			"Relevance": "[]",
+			"Device": "7decc0ccc7204745b5f2d43191277b4b",
+			"LCSC Part Name": "带DSP和FPU的高性能基础系列ARM Cortex-M4 MCU，具有512 KB Flash、168 MHz CPU、ART加速器、以太网和FSMC",
+			"Supplier Footprint": "LQFP-100(14x14)",
+			"JLCPCB Part Class": "扩展库",
+			"Datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20140801/1457707197138.pdf",
+			"Footprint": "2119efbf6bac4573be690d10d0722797",
+			"3D Model": "469e6cc70557486dbd01fd12ff814964",
+			"3D Model Title": "LQFP-100_L14.0-W14.0-H1.4-LS16.0-P0.50",
+			"3D Model Transform": "629.92,629.92,0,0,0,0,0,0,0",
+			"CPU Core": "ARM-M4",
+			"CPU Maximum Speed": "168MHz",
+			"Program Storage Size": "512KB",
+			"Program Memory Type": "FLASH",
+			"Number of I/O": "82",
+			"ADC (Bit)": "12bit",
+			"DAC (Bit)": "12bit",
+			"Voltage - Supply": "1.8V~3.6V",
+			"Applications": "-",
+			"Description": "CPU内核:ARM-M4;CPU最大主频:168MHz;应用领域:-;",
+			"Reuse Block": "",
+			"Group ID": "",
+			"Channel ID": ""
+		}
+	}
+]

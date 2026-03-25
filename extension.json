@@ -14,7 +14,7 @@
 		"url": "https://github.com/unnamed2/cubemx_importer"
 	},
 	"categories": "Other",
-	"keywords": ["CubeMX", "IOC"],
+	"keywords": ["CubeMX", "IOC", "STM32"],
 	"images": {
 		"logo": "./images/logo.png"
 	},
@@ -27,7 +27,7 @@
 		"sch": [
 			{
 				"id": "ImportCubeMXIOC",
-				"title": "Import CubeMX IOC",
+				"title": "从CubeMX IOC导入",
 				"menuItems": [
 					{
 						"id": "ImportCubeMXIOC",

@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>引脚规则设置</title>
+		<style>
+			:root {
+				--bg-1: #f8f6ef;
+				--bg-2: #e6ecda;
+				--card: #fffdf7;
+				--text: #1e2429;
+				--muted: #5e666d;
+				--line: #d4dcc8;
+				--brand: #2f5d47;
+				--brand-soft: #dfe9df;
+				--danger: #8f3026;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0;
+				min-height: 100vh;
+				font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+				color: var(--text);
+				background:
+					radial-gradient(70rem 28rem at 85% -10%, rgba(63, 106, 81, 0.16), transparent 62%),
+					radial-gradient(58rem 24rem at 10% 110%, rgba(150, 178, 119, 0.18), transparent 65%),
+					linear-gradient(160deg, var(--bg-1), var(--bg-2));
+			}
+
+			.page {
+				max-width: 1080px;
+				margin: 0 auto;
+				padding: 1.5rem 1rem 2rem;
+			}
+
+			.panel {
+				background: var(--card);
+				border: 1px solid var(--line);
+				border-radius: 18px;
+				padding: 1rem;
+				box-shadow: 0 14px 28px rgba(26, 34, 25, 0.08);
+				animation: rise-in 340ms ease-out;
+			}
+
+			h1 {
+				margin: 0;
+				font-size: clamp(1.3rem, 3vw, 1.9rem);
+				letter-spacing: 0.03em;
+			}
+
+			.sub {
+				margin: 0.4rem 0 0;
+				color: var(--muted);
+				font-size: 0.95rem;
+			}
+
+			.toolbar {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.6rem;
+				margin-top: 1rem;
+			}
+
+			.btn {
+				border: 1px solid var(--line);
+				border-radius: 999px;
+				background: #fff;
+				color: var(--text);
+				padding: 0.45rem 0.9rem;
+				font-size: 0.9rem;
+				cursor: pointer;
+				transition:
+					transform 0.15s ease,
+					border-color 0.15s ease,
+					background-color 0.15s ease;
+			}
+
+			.btn:hover {
+				transform: translateY(-1px);
+				border-color: #bdcab6;
+			}
+
+			.btn.primary {
+				background: var(--brand);
+				border-color: var(--brand);
+				color: #fff;
+			}
+
+			.btn.warn {
+				border-color: #d8b9b3;
+				color: var(--danger);
+				background: #fff8f7;
+			}
+
+			.table-wrap {
+				margin-top: 1rem;
+				overflow: auto;
+				border: 1px solid var(--line);
+				border-radius: 12px;
+			}
+
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				min-width: 760px;
+			}
+
+			th,
+			td {
+				border-bottom: 1px solid #e7ecdd;
+				padding: 0.62rem;
+				text-align: left;
+				font-size: 0.9rem;
+				vertical-align: middle;
+			}
+
+			th {
+				position: sticky;
+				top: 0;
+				z-index: 1;
+				background: #f4f8ef;
+				font-weight: 600;
+			}
+
+			tr:nth-child(even) {
+				background: #fcfdf9;
+			}
+
+			input,
+			select {
+				width: 100%;
+				max-width: 240px;
+				padding: 0.4rem 0.5rem;
+				border-radius: 8px;
+				border: 1px solid #cfd9c4;
+				font: inherit;
+				color: inherit;
+				background: #fff;
+			}
+
+			.code {
+				font-family: 'JetBrains Mono', Consolas, monospace;
+				background: #eef3e8;
+				padding: 0.12rem 0.36rem;
+				border-radius: 6px;
+				font-size: 0.82rem;
+			}
+
+			.footer {
+				margin-top: 0.9rem;
+				display: flex;
+				justify-content: space-between;
+				gap: 0.7rem;
+				flex-wrap: wrap;
+				align-items: center;
+			}
+
+			#result {
+				margin-top: 0.7rem;
+				white-space: pre-wrap;
+				background: #f3f8ee;
+				border: 1px dashed #c4d3b9;
+				border-radius: 10px;
+				padding: 0.75rem;
+				color: #2d4437;
+				font-size: 0.85rem;
+			}
+
+			@keyframes rise-in {
+				from {
+					opacity: 0;
+					transform: translateY(8px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@media (max-width: 820px) {
+				.page {
+					padding: 1rem 0.7rem 1.4rem;
+				}
+
+				.panel {
+					padding: 0.8rem;
+				}
+
+				.footer {
+					align-items: flex-start;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page">
+			<section class="panel">
+				<h1>引脚规则设置</h1>
+				<p class="sub">
+					在生成原理图之前，您可以在此界面设置引脚连接规则。每条规则包含一个规则名称、一个操作类型和一个 Net
+					名称（可选）。操作类型定义了当规则匹配时对引脚执行的操作，Net 名称则指定了连接或标识使用的 Net。
+					<br />
+					默认情况下，系统提供了一套预定义的规则，涵盖了常见的电源和功能引脚。您可以根据需要修改这些规则，或者添加新的规则以适应特定的设计需求。
+				</p>
+
+				<div class="toolbar">
+					<button id="restoreBtn" type="button" class="btn">恢复表单为默认规则</button>
+					<button id="setDefaultBtn" type="button" class="btn primary">设置为默认规则</button>
+					<button id="clearBtn" type="button" class="btn warn">清空</button>
+					<button id="OKBtn" type="button" class="btn">开始生成</button>
+				</div>
+
+				<div class="table-wrap">
+					<table>
+						<thead>
+							<tr>
+								<th style="width: 64px">#</th>
+								<th style="width: 180px">规则名称</th>
+								<th style="width: 220px">操作类型</th>
+								<th style="width: 230px">Net</th>
+							</tr>
+						</thead>
+						<tbody id="rulesBody"></tbody>
+					</table>
+				</div>
+
+				<div class="footer">
+					<div class="sub" id="summary"></div>
+					<div class="sub">存储键: <span class="code">mcu-rules-settings.v1</span></div>
+				</div>
+
+				<div id="result"></div>
+			</section>
+		</div>
+		<script>
+			const eda = window.eda || window.parent?.eda || window.top?.eda;
+			const STORAGE_KEY = 'mcu-rules-settings.v1';
+
+			// 与 src/index.ts 的 enum 顺序保持一致。
+			const OPERATION_TYPES = [
+				{ value: 0, label: '不连接' },
+				{ value: 1, label: '不连接并添加非链接标识' },
+				{ value: 4, label: '链接到' },
+			];
+
+			const DEFAULT_RULES = [
+				{ operation: 4, net: 'VCC', rule_name: 'VDD' },
+				{ operation: 4, net: 'GND', rule_name: 'VSS' },
+				{ operation: 4, net: 'VBAT', rule_name: 'VBAT' },
+				{ operation: 4, net: 'VCC', rule_name: 'VDDA' },
+				{ operation: 4, net: 'GND', rule_name: 'VSSA' },
+				{ operation: 4, net: 'VCC', rule_name: 'VDD33' },
+				{ operation: 4, net: '+5V', rule_name: 'VDD50' },
+				{ operation: 0, net: '', rule_name: 'VCAP' },
+				{ operation: 4, net: 'BOOT0', rule_name: 'BOOT0' },
+				{ operation: 4, net: 'BOOT1', rule_name: 'BOOT1' },
+				{ operation: 4, net: 'NRST', rule_name: 'NRST' },
+				{ operation: 4, net: 'VCC', rule_name: 'PDR_ON' },
+				{ operation: 1, net: '', rule_name: 'OTHERS' },
+			];
+
+			const rulesBody = document.getElementById('rulesBody');
+			const summary = document.getElementById('summary');
+			const result = document.getElementById('result');
+
+			let currentRules = loadRules();
+
+			function normalizeRules(raw) {
+				if (!Array.isArray(raw)) {
+					return structuredClone(DEFAULT_RULES);
+				}
+
+				const opValues = new Set(OPERATION_TYPES.map((item) => item.value));
+				const defaultsByName = Object.fromEntries(DEFAULT_RULES.map((item) => [item.rule_name, item]));
+
+				const merged = DEFAULT_RULES.map((defaultRule) => {
+					const found = raw.find((item) => item && item.rule_name === defaultRule.rule_name);
+					if (!found) {
+						return structuredClone(defaultRule);
+					}
+
+					const operation = Number(found.operation);
+					const safeOperation = opValues.has(operation) ? operation : defaultsByName[defaultRule.rule_name].operation;
+					const safeNet = typeof found.net === 'string' ? found.net : '';
+
+					return {
+						rule_name: defaultRule.rule_name,
+						operation: safeOperation,
+						net: safeNet,
+					};
+				});
+
+				return merged;
+			}
+
+			function loadRules() {
+				try {
+					const cached = eda.sys_Storage.getExtensionUserConfig(STORAGE_KEY);
+					if (!cached) {
+						return structuredClone(DEFAULT_RULES);
+					}
+					return normalizeRules(cached);
+				} catch (error) {
+					console.error('loadRules failed:', error);
+					return structuredClone(DEFAULT_RULES);
+				}
+			}
+
+			function renderSummary() {
+				const connectedCount = currentRules.filter((item) => item.operation === 6).length;
+				summary.textContent = `共 ${currentRules.length} 条规则，直接连接 ${connectedCount} 条。`;
+			}
+
+			function renderResult(text, success) {
+				result.textContent = text;
+				result.style.borderColor = success ? '#b8ccb1' : '#dbaea8';
+				result.style.background = success ? '#f3f8ee' : '#fff5f4';
+				result.style.color = success ? '#2d4437' : '#7a2e25';
+			}
+
+			function createOperationSelect(index, selectedValue) {
+				const select = document.createElement('select');
+				for (const op of OPERATION_TYPES) {
+					const option = document.createElement('option');
+					option.value = String(op.value);
+					option.textContent = op.label;
+					if (op.value === selectedValue) {
+						option.selected = true;
+					}
+					select.appendChild(option);
+				}
+
+				select.addEventListener('change', (event) => {
+					currentRules[index].operation = Number(event.target.value);
+					renderSummary();
+				});
+
+				return select;
+			}
+
+			function createNetInput(index, value) {
+				const input = document.createElement('input');
+				input.type = 'text';
+				input.placeholder = '例如: +3V3 / GND / BOOT0';
+				input.value = value;
+				input.addEventListener('input', (event) => {
+					currentRules[index].net = event.target.value;
+				});
+				return input;
+			}
+
+			function renderTable() {
+				rulesBody.innerHTML = '';
+				currentRules.forEach((rule, index) => {
+					const tr = document.createElement('tr');
+
+					const tdIndex = document.createElement('td');
+					tdIndex.textContent = String(index + 1);
+
+					const tdName = document.createElement('td');
+					tdName.innerHTML = `<span class="code">${rule.rule_name}</span>`;
+
+					const tdOp = document.createElement('td');
+					tdOp.appendChild(createOperationSelect(index, rule.operation));
+
+					const tdNet = document.createElement('td');
+					tdNet.appendChild(createNetInput(index, rule.net));
+
+					tr.appendChild(tdIndex);
+					tr.appendChild(tdName);
+					tr.appendChild(tdOp);
+					tr.appendChild(tdNet);
+					rulesBody.appendChild(tr);
+				});
+
+				renderSummary();
+			}
+
+			document.getElementById('setDefaultBtn').addEventListener('click', () => {
+				eda.sys_Storage.setExtensionUserConfig(STORAGE_KEY, currentRules);
+				renderResult('设置已保存', true);
+			});
+
+			document.getElementById('restoreBtn').addEventListener('click', () => {
+				config = eda.sys_Storage.getExtensionUserConfig(STORAGE_KEY);
+				if (config) {
+					try {
+						currentRules = normalizeRules(config);
+						renderResult('已恢复到上次保存的规则设置。', true);
+					} catch (error) {
+						console.error('恢复默认规则失败，数据格式错误:', error);
+						currentRules = structuredClone(DEFAULT_RULES);
+						renderResult('恢复默认规则失败，数据格式错误。已加载内置默认规则。', false);
+					}
+				} else {
+					currentRules = structuredClone(DEFAULT_RULES);
+					renderResult('没有找到保存的规则设置。已加载内置默认规则。', false);
+				}
+				renderTable();
+				renderResult('已恢复默认规则。', true);
+			});
+
+			document.getElementById('clearBtn').addEventListener('click', () => {
+				currentRules = structuredClone(DEFAULT_RULES);
+				renderTable();
+				renderResult('已清空所有规则设置。', true);
+			});
+
+			document.getElementById('OKBtn').addEventListener('click', () => {
+				eda.sys_MessageBus.push('DoGenerates', currentRules);
+				renderResult('规则已发送，正在生成...', true);
+			});
+
+			renderTable();
+		</script>
+	</body>
+</html>
